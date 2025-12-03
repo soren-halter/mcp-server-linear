@@ -51,6 +51,8 @@ export interface SearchIssuesInput {
   assigneeIds?: string[];
   states?: string[];
   priority?: number;
+  labelNames?: string[];
+  labelNameContains?: string;
   first?: number;
   after?: string;
   orderBy?: string;

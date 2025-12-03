@@ -377,6 +377,19 @@ export const toolSchemas = {
           description: "Filter by priority (0-4)",
           optional: true,
         },
+        labelNames: {
+          type: "array",
+          items: {
+            type: "string",
+          },
+          description: "Filter by exact label names (e.g., ['Bug', 'Frontend'])",
+          optional: true,
+        },
+        labelNameContains: {
+          type: "string",
+          description: "Filter by label name containing this string (case insensitive, e.g., 'cows out of break')",
+          optional: true,
+        },
         first: {
           type: "number",
           description: "Number of issues to return (default: 50)",

@@ -177,6 +177,16 @@ export class IssueHandler extends BaseHandler implements IssueHandlerMethods {
         filter.priority = { eq: args.priority };
       }
 
+      // Label filtering - exact match on label names
+      if (args.labelNames && args.labelNames.length > 0) {
+        filter.labels = { some: { name: { in: args.labelNames } } };
+      }
+
+      // Label filtering - contains (case insensitive)
+      if (args.labelNameContains) {
+        filter.labels = { some: { name: { containsIgnoreCase: args.labelNameContains } } };
+      }
+
       const result = (await client.searchIssues(
         filter,
         args.first || 50,
